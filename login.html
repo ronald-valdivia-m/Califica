@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
+
+    <link rel="stylesheet" href="css/login.css">
+
+    <title>Califica Tu Banco</title>
+
+
+</head>
+
+<body>
+    <div id="logreg-forms">
+        <form class="form-signin" id="signin-form">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Ingreso</h1>
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i>
+                        Ingresa con Facebook</span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google"></i>
+                        Ingresa con Google</span> </button>
+            </div>
+            <p style="text-align:center"> ó </p>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Correo electrónico" required=""
+                autofocus="">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+
+            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Ingresa</button>
+            <a href="#" id="forgot_pswd">Olvidaste tu contraseña?</a>
+            <hr>
+            <!-- <p>Don't have an account!</p>  -->
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i>
+                Regístrate</button>
+        </form>
+
+        <form action="/reset/password/" class="form-reset" id="reset-form">
+            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required=""
+                autofocus="">
+            <button class="btn btn-primary btn-block" type="submit">Cambiar contraseña</button>
+            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+
+        <form class="form-signup" id="signup-form">
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i>
+                        Regístrate con Facebook</span> </button>
+            </div>
+            <div class="social-login">
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google"></i>
+                        Regístrate con Google</span> </button>
+            </div>
+
+            <p style="text-align:center">ó</p>
+
+            <input type="text" id="user-name" class="form-control" placeholder="Nombre completo" required=""
+                autofocus="">
+            <input type="email" id="user-email" class="form-control" placeholder="Correo electrónico" required
+                autofocus="">
+            <input type="password" id="user-pass" class="form-control" placeholder="Contraseña" required autofocus="">
+            <input type="password" id="user-repeatpass" class="form-control" placeholder="Repetir contraseña" required
+                autofocus="">
+
+            <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Regístrate</button>
+            <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Atrás</a>
+        </form>
+        <br>
+
+    </div>
+    <p style="text-align:center">
+        <a href="http://bit.ly/2RjWFMfunction toggleResetPswd(e){
+                e.preventDefault();
+                $('#logreg-forms .form-signin').toggle() // display:block or none
+                $('#logreg-forms .form-reset').toggle() // display:block or none
+            }
+
+            function toggleSignUp(e){
+                e.preventDefault();
+                $('#logreg-forms .form-signin').toggle(); // display:block or none
+                $('#logreg-forms .form-signup').toggle(); // display:block or none
+            }
+
+            $(()=>{
+            // Login Register Form
+                $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+                $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+                $('#logreg-forms #btn-signup').click(toggleSignUp);
+                $('#logreg-forms #cancel_signup').click(toggleSignUp);
+            })g" target="_blank" style="color:black">© Bicentennial</a>
+    </p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/login.js"></script>
+
+    <!-- SDK FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+    <!-- Don't change the format for any other products. -->
+    <!-- etc. -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBx_6RNyzh03H2h1n7ITaF39SgK2qO4ywU",
+            authDomain: "calificatubanco-9f3f8.firebaseapp.com",
+            projectId: "calificatubanco-9f3f8",
+            storageBucket: "calificatubanco-9f3f8.appspot.com",
+            messagingSenderId: "343695100653",
+            appId: "1:343695100653:web:0091bdd18b552541b21ae4"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const fs = firebase.firestore();
+      </script>
+    
+</body>
+
+</html>
